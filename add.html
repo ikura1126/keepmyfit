@@ -189,9 +189,18 @@ document.getElementById("memo").value
 
 
 
+let records =
+JSON.parse(
+localStorage.getItem("records")
+) || [];
+
+
+records.push(data);
+
+
 localStorage.setItem(
-"exercise",
-JSON.stringify(data)
+"records",
+JSON.stringify(records)
 );
 
 
