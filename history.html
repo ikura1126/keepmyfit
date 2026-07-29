@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>履歴</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<div class="app">
+
+
+<header>
+
+<h1>
+📚 運動履歴
+</h1>
+
+<p>
+今までの記録
+</p>
+
+</header>
+
+
+<div id="list">
+
+
+</div>
+
+
+
+</div>
+
+
+
+<script>
+
+
+const records =
+JSON.parse(
+localStorage.getItem("records")
+) || [];
+
+
+
+const list =
+document.getElementById("list");
+
+
+
+if(records.length === 0){
+
+
+list.innerHTML =
+
+`
+<section class="card">
+
+まだ記録がありません
+
+</section>
+`;
+
+
+}else{
+
+
+records.reverse()
+.forEach(record=>{
+
+
+list.innerHTML +=
+
+
+`
+
+<section class="card">
+
+
+<h2>
+${record.type}
+</h2>
+
+
+<p>
+📅 ${record.date}
+</p>
+
+
+<p>
+🕒 ${record.time}
+</p>
+
+
+<p>
+⏱ ${record.duration} 分
+</p>
+
+
+<p>
+⚖️ ${record.weight || "--"} kg
+</p>
+
+
+<p>
+${record.memo || ""}
+</p>
+
+
+</section>
+
+
+`;
+
+
+
+});
+
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>
