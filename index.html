@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>KeepMyFit</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <header>
+        <h1>KeepMyFit</h1>
+        <p id="today"></p>
+    </header>
+
+
+    <section class="card">
+
+        <h2>🔥 連続記録</h2>
+
+        <div class="number">
+            0日
+        </div>
+
+    </section>
+
+
+    <section class="card">
+
+        <h2>⚖️ 今日の体重</h2>
+
+        <div class="number">
+            -- kg
+        </div>
+
+    </section>
+
+
+    <section class="card">
+
+        <h2>🏃 今日の運動</h2>
+
+        <div class="exercise">
+
+            まだ記録がありません
+
+        </div>
+
+    </section>
+
+
+    <button class="add-button">
+        ＋ 運動を記録する
+    </button>
+
+
+</div>
+
+
+<nav>
+
+    <div>
+        🏠
+        <span>ホーム</span>
+    </div>
+
+    <div>
+        📅
+        <span>カレンダー</span>
+    </div>
+
+    <div>
+        📊
+        <span>統計</span>
+    </div>
+
+</nav>
+
+
+<script>
+
+const date = new Date();
+
+const year = date.getFullYear();
+const month = date.getMonth()+1;
+const day = date.getDate();
+
+document.getElementById("today").innerHTML =
+`${year}年${month}月${day}日`;
+
+</script>
+
+
+</body>
+</html>
