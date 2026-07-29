@@ -47,11 +47,11 @@
 
         <h2>🏃 今日の運動</h2>
 
-        <div class="exercise">
+        <div class="exercise" id="todayExercise">
 
-            まだ記録がありません
+    まだ記録がありません
 
-        </div>
+</div>
 
     </section>
 
@@ -97,14 +97,128 @@ onclick="location.href='add.html'"
 
 <script>
 
-const date = new Date();
 
-const year = date.getFullYear();
-const month = date.getMonth()+1;
-const day = date.getDate();
+const today = new Date();
+
+
+const year =
+today.getFullYear();
+
+
+const month =
+today.getMonth()+1;
+
+
+const day =
+today.getDate();
+
+
+
+const todayText =
+`${year}-${String(month).padStart(2,"0")}-${String(day).padStart(2,"0")}`;
+
+
 
 document.getElementById("today").innerHTML =
+
 `${year}年${month}月${day}日`;
+
+
+
+
+const records =
+
+JSON.parse(
+localStorage.getItem("records")
+) || [];
+
+
+
+const todayRecords =
+
+records.filter(record =>
+
+record.date === todayText
+
+);
+
+
+
+const area =
+
+document.getElementById(
+"todayExercise"
+);
+
+
+
+if(todayRecords.length > 0){
+
+
+
+let html = "";
+
+let total = 0;
+
+
+
+todayRecords.forEach(record=>{
+
+
+total += Number(record.duration);
+
+
+
+html +=
+
+`
+
+<p>
+
+🏃 ${record.type}
+
+<br>
+
+⏱ ${record.duration} 分
+
+</p>
+
+`;
+
+
+
+});
+
+
+
+html +=
+
+`
+
+<hr>
+
+今日合計：
+${total} 分
+
+`;
+
+
+
+area.innerHTML = html;
+
+
+
+}else{
+
+
+area.innerHTML =
+
+"まだ記録がありません";
+
+
+}
+
+
 
 </script>
 <script>
